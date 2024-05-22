@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./config');
+const db = require('./firebase-config');
 const app = express();
 const port = process.env.PORT || 3000;
 
