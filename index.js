@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./firebase-config');
+const db = require('./config');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -7,6 +7,7 @@ app.use(express.json());
 
 app.get('/corretor-atual', async (req, res) => {
   try {
+    console.log("Requisição recebida");
     const controleRef = db.collection('ControleRoleta').doc('roleta');
     const controleDoc = await controleRef.get();
     const corretorAtual = controleDoc.data().corretorAtual;
@@ -28,6 +29,7 @@ app.get('/corretor-atual', async (req, res) => {
 
     res.status(200).send({ idClickUp: corretorData.idClickUp });
   } catch (error) {
+    console.error('Erro ao processar a requisição:', error);
     res.status(500).send('Erro ao processar a requisição: ' + error.message);
   }
 });
