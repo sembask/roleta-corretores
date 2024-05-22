@@ -1,11 +1,11 @@
 const express = require('express');
-const db = require('./firebase-config');
+const db = require('./firebase-config'); // Certifique-se de que esse caminho está correto
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.post('/novo-lead', async (req, res) => {
+app.get('/corretor-atual', async (req, res) => {
   try {
     const controleRef = db.collection('ControleRoleta').doc('roleta');
     const controleDoc = await controleRef.get();
@@ -28,7 +28,7 @@ app.post('/novo-lead', async (req, res) => {
 
     res.status(200).send({ idClickUp: corretorData.idClickUp });
   } catch (error) {
-    res.status(500).send('Erro ao processar o lead: ' + error.message);
+    res.status(500).send('Erro ao processar a requisição: ' + error.message);
   }
 });
 
