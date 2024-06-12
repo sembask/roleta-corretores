@@ -32,7 +32,10 @@ app.get('/corretor-atual', async (req, res) => {
         res.status(404).send('Nenhum corretor encontrado');
         return;
       }
-      res.status(200).send({ idClickUp: primeiroCorretorDoc.data().idClickUp });
+      res.status(200).send({ 
+        idClickUp: primeiroCorretorDoc.data().idClickUp,
+        nome: primeiroCorretorDoc.data().nome 
+      });
       return;
     }
 
@@ -43,7 +46,10 @@ app.get('/corretor-atual', async (req, res) => {
     let novoCorretorAtual = corretorAtual === totalCorretores ? 1 : corretorAtual + 1;
     await controleRef.update({ corretorAtual: novoCorretorAtual });
 
-    res.status(200).send({ idClickUp: corretorData.idClickUp });
+    res.status(200).send({ 
+      idClickUp: corretorData.idClickUp,
+      nome: corretorData.nome 
+    });
   } catch (error) {
     console.error('Erro ao processar a requisição:', error);
     res.status(500).send('Erro ao processar a requisição: ' + error.message);
