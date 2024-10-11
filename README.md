@@ -19,3 +19,15 @@ Este projeto é uma API simples para distribuir leads de forma justa entre corre
 3 - Após a seleção, o corretor é movido para o final da fila.
 
 4 - O próximo corretor na fila será escolhido na próxima vez que a API for chamada.
+## Usado por
+
+Esse projeto é usado pelas seguintes empresas:
+
+- Prime Realty Negócios Imobiliários
+
+
+
+# Tecnologias Utilizadas
+
+Node.js: Para a construção da API e gerenciamento de requests.
+Firebase: Utilizado como backend para armazenar os dados dos corretores e leads de forma segura e eficiente.
